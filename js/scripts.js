@@ -39,7 +39,7 @@ for (let i = 0; i < pokemonList.length; i++){
         document.write("#" + pokemonList[i].entryNumber + " " + pokemonList[i].name + " (height: " + pokemonList[i].height + "m) Wow, thats small!<br>")
     }
     else {
-        //would this also be acceptible code?
+        //would this also be acceptible code? uses template strings
         document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m)<br>`)
     }
 }
