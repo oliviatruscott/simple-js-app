@@ -33,13 +33,12 @@ let pokemonList = [
 //loop prints list of pokemon, adds statement based on height
 for (let i = 0; i < pokemonList.length; i++){
     if(pokemonList[i].height >= 5){
-        document.write("#" + pokemonList[i].entryNumber + " " + pokemonList[i].name + " (height: " + pokemonList[i].height + "m) Wow, thats big!<br>")
+        document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m) Wow, thats big!<br>`)
     }
     else if(pokemonList[i].height <= 1){
-        document.write("#" + pokemonList[i].entryNumber + " " + pokemonList[i].name + " (height: " + pokemonList[i].height + "m) Wow, thats small!<br>")
+        document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m) Wow, thats small!<br>`)
     }
     else {
-        //would this also be acceptible code? uses template strings
         document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m)<br>`)
     }
 }
