@@ -30,15 +30,15 @@ let pokemonList = [
     }
 ];
 
-//loop prints list of pokemon, adds statement based on height
-for (let i = 0; i < pokemonList.length; i++){
-    if(pokemonList[i].height >= 5){
-        document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m) Wow, thats big!<br>`)
+//forEach loop, prints pokemon info with extra comment on size
+pokemonList.forEach(function(pokemon) {
+    if(pokemon.height >= 5){
+        document.write(`#${pokemon.entryNumber} ${pokemon.name} (height: ${pokemon.height}m) Wow, thats big!<br>`)
     }
-    else if(pokemonList[i].height <= 1){
-        document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m) Wow, thats small!<br>`)
+    else if(pokemon.height <= 1){
+        document.write(`#${pokemon.entryNumber} ${pokemon.name} (height: ${pokemon.height}m) Wow, thats small!<br>`)
     }
     else {
-        document.write(`#${pokemonList[i].entryNumber} ${pokemonList[i].name} (height: ${pokemonList[i].height}m)<br>`)
+        document.write(`#${pokemon.entryNumber} ${pokemon.name} (height: ${pokemon.height}m)<br>`)
     }
-}
+})
