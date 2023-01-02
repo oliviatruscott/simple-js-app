@@ -15,3 +15,18 @@ body {
     line-height: 1.6;
     color: var(--text-color);
 }
+
+.pokemon-list {
+    list-style: none;
+}
+
+.pokemon-button {
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    display: inline-block;
+    font-family: inherit;
+    padding: 16px 32px;
+    margin: 4px 2px;
+}
