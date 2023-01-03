@@ -1,14 +1,12 @@
 //IIFE wrapping pokemonList array
 let pokemonRepository = (function() {
-    let pokemonList = [
-        { name: 'Bulbasaur', entryNumber: 1, height: 0.7,types: ['Grass','Poison'] },
-        { name: 'Ivysaur', entryNumber: 2, height: 1, types: ['Grass','Poison'] },
-        { name: 'Venusaur', entryNumber: 3, height: 2, types: ['Grass','Poison'] }
-    ];
+    let pokemonList = [];
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
     function add (pokemon) {
-        if (typeof pokemon === 'object' && pokemon.name && pokemon.entryNumber && pokemon.height && pokemon.types) {
-            pokemonList.push(pokemon);
-        }
+        "name" in pokemon &&
+        "detailsUrl" in pokemon &&
+        "imageURL" in pokemon
+        pokemonList.push(pokemon);
     };
     function getAll () {
         return pokemonList
@@ -24,40 +22,59 @@ let pokemonRepository = (function() {
             button.innerText = pokemon.name;
             button.classList.add('pokemon-button');
         listPokemon.appendChild(button);
-        pokemonList.appendChild(listPokemon);         //error listed here???
+        pokemonList.appendChild(listPokemon);
         //event listener, console logs when button is clicked
         button.addEventListener('click', function() {
             showDetails(pokemon);
     });
     };
-
+    //api configuration
+    function loadList() {
+        return fetch(apiUrl).then(function (response) {
+              return response.json();
+        }).then(function (json) {
+            json.results.forEach(function (item) {
+                let pokemon = {
+                    name: item.name,
+                    detailsUrl: item.url
+            };
+            add(pokemon);
+            console.log(pokemon);
+        });
+        }).catch(function (e) {
+            console.error(e);
+        })
+    };
+    function loadDetails(item) {
+        let url = item.detailsUrl;
+        return fetch(url).then(function(response) {
+            return response.json();
+        }).then(function(details) {
+            item.imageUrl = details.sprites.front_default;
+            item.height = details.height;
+            item.types = details.types;
+        }).catch(function(e){
+            console.error(e);
+        });
+    };
+    //displays details on clicking button
+    function showDetails(item) {
+        loadDetails(item).then(function() {
+            console.log(item);
+        });
+    };
     return {
         add: add,
         getAll: getAll,
-        addListItem: addListItem
+        addListItem: addListItem,
+        loadList: loadList,
+        loadDetails: loadDetails,
+        showDetails: showDetails
     };
 }) ();
 
-//using add function
-pokemonRepository.add({ name: 'Onix', entryNumber: 95, height: 8.8, types: ['Rock','Ground'] });
-
-console.log(pokemonRepository.getAll());
-
-//for each loop goes through addListitem function
-pokemonRepository.getAll().forEach(function(pokemon) {
-    pokemonRepository.addListItem(pokemon);
+pokemonRepository.loadList().then(function() {
+    pokemonRepository.getAll().forEach(function(pokemon) {
+        pokemonRepository.addListItem(pokemon);
+    });
 });
-
-
-
-//filter pokemon by name
-//let pokemonNames = []; //empty array for names
-//for(let i = 0; i < pokemonRepository.getAll().length; i++) { //adds names into array
-//    pokemonNames.push(pokemonRepository.getAll()[i].name);
-//};
-
-//function findPokemon (query) { //function for searching pokemon
-//    return pokemonNames.filter(name => name.toLowerCase().indexOf(query.toLowerCase()) > -1);
-//};
-
-//console.log(findPokemon('On')); //calls upon search function with partial pokemon name
