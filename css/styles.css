@@ -24,6 +24,11 @@ button:focus,
     opacity: .8;
 }
 
+/* added so bootstrap nav bar stays on top while scroll but does not cover content */
+.page-container {
+  margin-top: 60px;
+}
+
 .pokemon-list {
     list-style: none;
 }
@@ -86,4 +91,3 @@ button:focus,
   .modal p {
     margin-bottom: 0;
   }
-/*add cursor:pointer; to buttons*/
