@@ -22,19 +22,39 @@ body {
   margin-top: 60px;
 }
 
+/* center buttons */
+.pokemon-list {
+  text-align: center;
+}
+
 /* custom modal */
 .modal-dialog {
-  border: 8px solid;
   border-color: var(--secondary-color);
-  border-radius: 10px;
   z-index: 999;
 }
 
 /* custom button class*/
 .pokemon-button {
-    text-align: center;
-    font-family: inherit;
-    padding: 16px 32px;
-    margin: 4px 2px;
-    text-transform: capitalize;
+  text-align: center;
+  font-family: inherit;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  text-transform: capitalize;
+  background-color: var(--primary-color);
+  border: none;
+  vertical-align: middle;
+  width: 30%;
+}
+
+.pokemon-button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* overwriting bootstrap to custom */
+.modal-title {
+  text-transform: capitalize;
+}
+
+.modal-body {
+  text-align: center;
 }
