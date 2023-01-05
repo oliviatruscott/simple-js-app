@@ -16,12 +16,16 @@
 
     <body>
         <!-- bootstrap classes to make navbar w/ search bar (does not search) -->
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand">Pokedex</a>
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div class="form-inline">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2 my-2 my-sm-0" type="search" placeholder="Search Pokemon" aria-label="Search">
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                    </span>
+                </form>
+            </div>
         </nav>
 
         <!-- div to hold pokedex buttons -->
@@ -31,11 +35,11 @@
         </div>
                 
         <!-- bootstrap centered modal -->
-        <div class="modal fade" id="pokemon-modal" tabindex="-1" role="dialog" aria-labelledby="pokemon-modal" aria-hidden="true">
+        <div class="modal fade show" id="pokemon-modal" tabindex="-1" role="dialog" aria-labelledby="pokemon-modal" aria-model="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -47,11 +51,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- personal javascript -->
-        <script src="js/promise-pollyfill.js"></script>
-        <script src="js/fetch-pollyfill.js"></script>
-        <script src="js/scripts.js"></script>
         
         <!-- bootstrap jQuery, popper, and javascript plugins -->
         <script
@@ -69,5 +68,10 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
             crossorigin="anonymous">
         </script>
+
+        <!-- personal javascript -->
+        <script src="js/promise-pollyfill.js"></script>
+        <script src="js/fetch-pollyfill.js"></script>
+        <script src="js/scripts.js"></script>
     </body>
 </html>
